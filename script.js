@@ -43,6 +43,18 @@ let container = document.querySelector('.container');
 let rot = [0, 0];
 let pos = [0, 0];
 container.addEventListener('mousemove', (e) => {mouse3d(e)})
+// Add touch event listeners
+container.addEventListener('touchmove', (e) => {touch3d(e)});
+
+function touch3d(e) {
+    // Prevent the browser from doing its default thing (like scrolling)
+    e.preventDefault();
+    if (e.touches.length > 0) {
+        let touch = e.touches[0]; // Get the first touch
+        pos = [(touch.clientX / window.innerWidth) * 2 - 1, (touch.clientY / window.innerHeight) * 2 - 1];
+    }
+}
+
 function mouse3d(e) {
 	pos = [(e.clientX/window.innerWidth)*2-1, (e.clientY/window.innerHeight)*2-1];
 }
