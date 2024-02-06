@@ -191,6 +191,9 @@ a:hover {
 }
 
 @media (max-width: 600px) { /* Adjust the breakpoint as needed */
+	body {
+		font-size: 5px;
+	}
     .container {
         /* Adjust layout for small screens */
     }
