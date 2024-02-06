@@ -199,10 +199,10 @@ a:hover {
     }
     /* Adjust the axes and floater containers for smaller screens */
     .x1 {
-		width: 400px;
+		width: 300px;
     }
 	.y1, .y2, .y3, .z1, .z2, .z3 {
-		height: 650px;
+		height: 550px;
 	}
 }
 
