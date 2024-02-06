@@ -1,17 +1,16 @@
-
 let temp = ``;
-let strings = ['some random string', 'yetanothingrandomstringthing', 'who is', '1237918245']
+let strings = ['some random string', 'yet another random string thing', 'who is', '1237918245'];
 let angleIncrement = Math.PI * (3 - Math.sqrt(5)); // Golden angle in radians for even distribution
 let spread = 40; // Adjust spread to avoid overlap
 let namesAndLinks = [
     { name: 'Amelia Jeoung', link: 'link-amelia.html' },
     { name: 'Elliott Romano', link: 'link-elliott.html' },
     { name: 'Ashley Woo', link: 'link-ashley.html' },
-    { name: 'Reese Huang', link: 'link-reese.html' }, // Yijing Huang (Reese)
-    { name: 'Leon Calzone', link: 'link-leon.html' }, // Leonardo Calzone (Leon)
-    { name: 'Esther Choi', link: 'link-esther.html' }, // Eun Hae Choi (Esther)
-    { name: 'Daisy Wu', link: 'link-daisy.html' }, // Jiayi Wu (Daisy)
-    { name: 'Stephanie Granados', link: 'link-stephanie.html' }, // Estephania Granados (Stephanie)
+    { name: 'Reese Huang', link: 'link-reese.html' },
+    { name: 'Leon Calzone', link: 'link-leon.html' },
+    { name: 'Esther Choi', link: 'link-esther.html' },
+    { name: 'Daisy Wu', link: 'link-daisy.html' },
+    { name: 'Stephanie Granados', link: 'link-stephanie.html' },
     { name: 'Zheyun Chen', link: 'link-zheyun.html' },
     { name: 'Jerimiah Harrington', link: 'link-jerimiah.html' },
     { name: 'Ruijie Tai', link: 'link-ruijie.html' },
@@ -19,6 +18,7 @@ let namesAndLinks = [
     { name: 'Qinzhi Wang', link: 'link-qinzhi.html' },
     { name: 'Lucy Pham', link: 'link-lucy.html' }
 ];
+
 for (let i = 0; i < namesAndLinks.length; i++) {
     let y = (i / namesAndLinks.length) * 2 - 1 + (1 / namesAndLinks.length);
     let radius = Math.sqrt(1 - y * y); // radius at y
@@ -36,51 +36,52 @@ for (let i = 0; i < namesAndLinks.length; i++) {
         </div>
     `;
 }
+
 let content = document.querySelector('.content');
 content.innerHTML += temp;
 
 let container = document.querySelector('.container');
 let rot = [0, 0];
 let pos = [0, 0];
-container.addEventListener('mousemove', (e) => {mouse3d(e)})
-// Add touch event listeners
-container.addEventListener('touchmove', (e) => {touch3d(e)});
+
+container.addEventListener('mousemove', mouse3d);
+
+// Updated to handle touch events properly with `preventDefault` and passive listener
+container.addEventListener('touchmove', touch3d, { passive: false });
 
 function touch3d(e) {
-    // Prevent the browser from doing its default thing (like scrolling)
-    e.preventDefault();
+    e.preventDefault(); // Prevent scrolling or zooming
     if (e.touches.length > 0) {
         let touch = e.touches[0]; // Get the first touch
         pos = [(touch.clientX / window.innerWidth) * 2 - 1, (touch.clientY / window.innerHeight) * 2 - 1];
+        updateRotation(); // Call rotation update immediately
     }
 }
 
 function mouse3d(e) {
-	pos = [(e.clientX/window.innerWidth)*2-1, (e.clientY/window.innerHeight)*2-1];
+    pos = [(e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1];
+    // No need to call updateRotation here, mainLoop handles it continuously
 }
-let loop;
+
 let acc = 10;
 function mainLoop() {
-	loop = setTimeout(() => {
-		let targets = [pos[0]*30, pos[1]*30];
-		let delta = [targets[0]-rot[0], targets[1]-rot[1]];
-		rot[0] = rot[0] + delta[0]/acc;
-		if (rot[0] > 90) {
-			rot[0] = 90;
-		} else if (rot[0] < -90) {
-			rot[0] = -90;
-		}
-		rot[1] = rot[1] + delta[1]/acc;
-		if (rot[1] > 90) {
-			rot[1] = 90;
-		} else if (rot[1] < -90) {
-			rot[1] = -90;
-		}
-		content.style.transform = `rotateX(${rot[1]}deg) rotateY(${-rot[0]}deg)`;
-		for (let div of document.querySelectorAll('.floater-content')) {
-			div.style.transform = `translate(-50%, -50%)`; // Removed the counter-rotation part
-		}
-		mainLoop();
-	}, 5)
+    let targets = [pos[0] * 30, pos[1] * 30];
+    let delta = [targets[0] - rot[0], targets[1] - rot[1]];
+    rot[0] += delta[0] / acc;
+    rot[0] = Math.max(Math.min(rot[0], 90), -90); // Clamp between -90 and 90
+    rot[1] += delta[1] / acc;
+    rot[1] = Math.max(Math.min(rot[1], 90), -90); // Clamp between -90 and 90
+    
+    content.style.transform = `rotateX(${rot[1]}deg) rotateY(${-rot[0]}deg)`;
+    setTimeout(mainLoop, 5); // Continue the loop
 }
-mainLoop();
+
+function updateRotation() {
+    // This function is triggered by touch movement to update the rotation immediately
+    // It's defined for clarity but its code is already within mainLoop,
+    // which continuously updates rotation based on `pos`.
+    // If you want to decouple rotation logic for touch, you might call this
+    // function directly from `touch3d`.
+}
+
+mainLoop(); // Start the animation loop
