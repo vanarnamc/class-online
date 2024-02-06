@@ -1,0 +1,192 @@
+* {
+	transform-style: preserve-3d;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+@font-face {
+    font-family: 'ABCSyntMono';
+    src: url('fonts/ABCSynt-Mono-Trial.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SuisseWorks';
+    src: url('fonts/Suisse\ Works\ Book.otf') format('opentype');
+}
+body {
+    font-family: 'SuisseWorks', serif;
+	font-size: 10px;
+}
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	/* transform: translateZ(-1000px); */
+}
+@keyframes rotation {
+	from {
+		transform: rotateX(0)
+	} to {
+		transform: rotateX(180deg)
+	}
+}
+.content {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	transition: .2s linear;
+}
+a {
+	font-size: 1rem;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}	
+.floater-container {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* mix-blend-mode: difference; */
+}
+
+
+@keyframes pulse {
+	from {
+		width: 0px;
+	}
+	to {
+		width: 30px;
+	}
+}
+.label-x, .label-y, .label-z {
+    position: absolute;
+    color: blue /* Change color as needed */
+    /* Additional styling */
+}
+.label-x {
+    /* Position this div at the end of the X-axis */
+ 
+    transform: translate(0%, -100%);
+}
+.label-x-end{
+	right: 00%; /* Start from the right end of the line and move leftwards */
+    top: 50%; /* Align vertically with the line */
+	transform: translate(0%, -100%);
+
+}
+.label-y {
+    /* Align with the bottom of the Y-axis */
+  
+	white-space: nowrap;
+	transform-origin: 0 100%; /* Rotate around the bottom-left corner */
+
+	transform: rotate(90deg) translateX(-18%);
+	top: 000%;
+}
+
+
+.label-y-end {
+    /* Position this div at the end of the Y-axis (top) */
+    left: 0%; /* Align with the top of the container */
+	top: 100%; /* Align with the left of the container */
+    transform: rotate(90deg) translateX(-115%);}
+
+.label-z {
+    /* Position this div at the start of the Z-axis (screen center) */
+    left: 0%;
+    top: 100%;
+	transform-origin: 0 100%; /* Rotate around the bottom-left corner */
+
+	white-space: nowrap;
+	transform: rotateX(270deg) rotateY(90deg) translateX(15%);
+}
+
+.label-z-end {
+    /* Position this div at the end of the Z-axis (directly in front of the viewer) */
+    left: 100%;
+    top: 0%;
+	transform: rotateX(270deg) rotateY(90deg) translateX(-85%);
+
+   
+}
+/* Axes */
+.grid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100dvh;
+	pointer-events: none;
+	z-index: 999;
+	opacity: .5;
+}
+
+
+.x1 {
+	position: absolute;
+	width: 800px;
+	height: 2px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+.y1 {
+	position: absolute;
+	width: 2px;
+	height: 800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+.y2 {
+	position: absolute;
+	width: 2px;
+	height: 800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%) rotateY(90deg);
+	pointer-events: none;
+}
+.y3 {
+	position: absolute;
+	width: 2px;
+	height:800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%) rotateY(90deg);
+	opacity: .5;
+	pointer-events: none;
+}
+.z1 {
+	position: absolute;
+	width: 2px;
+	height: 800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%) rotateX(90deg);
+	pointer-events: none;
+}
+.z2 {
+	position: absolute;
+	width: 2px;
+	height: 800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%) rotateX(90deg) rotateY(90deg);
+	pointer-events: none;
+}
+.z3 {
+	position: absolute;
+	width: 2px;
+	height: 800px;
+	background-color: rgb(0, 0, 0);
+	transform: translate(-50%, -50%) rotateX(90deg);
+	pointer-events: none;
+	opacity: .5;
+}
+
