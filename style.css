@@ -190,3 +190,16 @@ a:hover {
 	opacity: .5;
 }
 
+@media (max-width: 600px) { /* Adjust the breakpoint as needed */
+    .container {
+        /* Adjust layout for small screens */
+    }
+    .label-x, .label-y, .label-z {
+        /* Adjust font sizes and positioning for readability */
+    }
+    /* Adjust the axes and floater containers for smaller screens */
+    .x1 {
+		width: 466px;
+    }
+}
+
