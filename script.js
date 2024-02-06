@@ -49,32 +49,45 @@ container.addEventListener('mousemove', mouse3d);
 // Updated to handle touch events properly with `preventDefault` and passive listener
 container.addEventListener('touchmove', touch3d, { passive: false });
 
-function touch3d(e) {
-    e.preventDefault(); // Prevent scrolling or zooming
-    if (e.touches.length > 0) {
-        let touch = e.touches[0]; // Get the first touch
-        pos = [(touch.clientX / window.innerWidth) * 2 - 1, (touch.clientY / window.innerHeight) * 2 - 1];
-        updateRotation(); // Call rotation update immediately
+let isUpdating = false;
+
+function mouse3d(e) {
+    if (!isUpdating) {
+        isUpdating = true;
+        requestAnimationFrame(() => {
+            pos = [(e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1];
+            isUpdating = false;
+        });
     }
 }
 
-function mouse3d(e) {
-    pos = [(e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1];
-    // No need to call updateRotation here, mainLoop handles it continuously
+function touch3d(e) {
+    e.preventDefault();
+    if (!isUpdating && e.touches.length > 0) {
+        isUpdating = true;
+        requestAnimationFrame(() => {
+            let touch = e.touches[0];
+            pos = [(touch.clientX / window.innerWidth) * 2 - 1, (touch.clientY / window.innerHeight) * 2 - 1];
+            isUpdating = false;
+        });
+    }
 }
+
 
 let acc = 10;
 function mainLoop() {
+    requestAnimationFrame(mainLoop); // Use requestAnimationFrame for smoother animations
+    
     let targets = [pos[0] * 30, pos[1] * 30];
     let delta = [targets[0] - rot[0], targets[1] - rot[1]];
     rot[0] += delta[0] / acc;
-    rot[0] = Math.max(Math.min(rot[0], 90), -90); // Clamp between -90 and 90
+    rot[0] = Math.max(Math.min(rot[0], 90), -90);
     rot[1] += delta[1] / acc;
-    rot[1] = Math.max(Math.min(rot[1], 90), -90); // Clamp between -90 and 90
+    rot[1] = Math.max(Math.min(rot[1], 90), -90);
     
     content.style.transform = `rotateX(${rot[1]}deg) rotateY(${-rot[0]}deg)`;
-    setTimeout(mainLoop, 5); // Continue the loop
 }
+requestAnimationFrame(mainLoop); // Start the animation loop
 
 function updateRotation() {
     // This function is triggered by touch movement to update the rotation immediately
