@@ -6,8 +6,8 @@ function isMobile() {
     return window.innerWidth <= 600; // Example breakpoint, adjust as needed
 }
 
-let spread = 40; // Default spread
-let spreadY = isMobile() ? 90 : 40; // Increase vertical spread on mobile
+let spread = 32; // Default spread
+let spreadY = isMobile() ? 70 : 40; // Increase vertical spread on mobile
 
 // Function to shuffle an array using the Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
