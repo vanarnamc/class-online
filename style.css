@@ -13,9 +13,15 @@
     font-family: 'SuisseWorks';
     src: url('fonts/Suisse\ Works\ Book.otf') format('opentype');
 }
+
+@font-face {
+	font-family: 'SuisseWorksBold';
+	src: url('fonts/Suisse\ Works\ Medium.otf') format('opentype');
+}
 body {
     font-family: 'SuisseWorks', serif;
 	font-size: 10px;
+	height: 100dvh;
 }
 .container {
 	position: absolute;
@@ -29,6 +35,36 @@ body {
 	overflow: hidden;
 	/* transform: translateZ(-1000px); */
 }
+
+.footer{
+	font-size: 10px;
+
+	font-family: 'SuisseWorksBold';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 100px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+	overflow: hidden;
+	margin: 10px;
+	
+	/* transform: translateZ(-1000px); */
+
+}
+
+.footer a {
+	font-size: 10px;
+	text-decoration: none;
+	color: black;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}	
+
 @keyframes rotation {
 	from {
 		transform: rotateX(0)
@@ -142,7 +178,7 @@ a:hover {
 .y1 {
 	position: absolute;
 	width: 2px;
-	height: 800px;
+	height: 700px;
 	background-color: rgb(0, 0, 0);
 	transform: translate(-50%, -50%);
 	pointer-events: none;
@@ -150,7 +186,7 @@ a:hover {
 .y2 {
 	position: absolute;
 	width: 2px;
-	height: 800px;
+	height: 700px;
 	background-color: rgb(0, 0, 0);
 	transform: translate(-50%, -50%) rotateY(90deg);
 	pointer-events: none;
@@ -158,7 +194,7 @@ a:hover {
 .y3 {
 	position: absolute;
 	width: 2px;
-	height:800px;
+	height:700px;
 	background-color: rgb(0, 0, 0);
 	transform: translate(-50%, -50%) rotateY(90deg);
 	opacity: .5;
@@ -206,6 +242,12 @@ a:hover {
     }
 	.y1, .y2, .y3, .z1, .z2, .z3 {
 		height: 800px;
+	}
+	.footer{
+		font-size: 7px;
+	}
+	.footer a {
+		font-size: 7px;
 	}
 }
 
