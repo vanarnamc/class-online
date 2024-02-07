@@ -230,13 +230,8 @@ a:hover {
 	body {
 		font-size: 5px;
 	}
-    .container {
-        /* Adjust layout for small screens */
-    }
-    .label-x, .label-y, .label-z {
-        /* Adjust font sizes and positioning for readability */
-    }
-    /* Adjust the axes and floater containers for smaller screens */
+
+
     .x1 {
 		width: 400px;
     }

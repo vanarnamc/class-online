@@ -18,20 +18,20 @@ function shuffleArray(array) {
 }
 
 let namesAndLinks = [
-    { name: 'Amelia Jeoung', link: 'link-amelia.html' },
-    { name: 'Elliott Romano', link: 'link-elliott.html' },
-    { name: 'Ashley Woo', link: 'link-ashley.html' },
-    { name: 'Reese Huang', link: 'link-reese.html' },
-    { name: 'Leon Calzone', link: 'link-leon.html' },
-    { name: 'Esther Choi', link: 'link-esther.html' },
-    { name: 'Daisy Wu', link: 'link-daisy.html' },
-    { name: 'Stephanie Granados', link: 'link-stephanie.html' },
-    { name: 'Zheyun Chen', link: 'link-zheyun.html' },
-    { name: 'Jerimiah Harrington', link: 'link-jerimiah.html' },
-    { name: 'Ruijie Tai', link: 'link-ruijie.html' },
-    { name: 'Yufan Xu', link: 'link-yufan.html' },
-    { name: 'Qinzhi Wang', link: 'link-qinzhi.html' },
-    { name: 'Lucy Pham', link: 'link-lucy.html' }
+    { name: 'Amelia Jeoung', link: 'https://cahaya.world/index.html' },
+    { name: 'Elliott Romano', link: 'https://lonesomecowpoke.online/index.html' },
+    { name: 'Ashley Woo', link: 'https://ash-7121.github.io/Project1-Cont/' },
+    { name: 'Reese Yijing Huang', link: 'https://reese-21.github.io/Project2/' },
+    { name: 'Leon Calzone', link: 'https://leoncalzone.github.io/DISSECARE/' },
+    { name: 'Esther Choi', link: 'http://draw-your-social-avatar.site/' },
+    { name: 'Daisy Wu', link: 'ddd' },
+    { name: 'Stephanie Granados', link: 'https://www.brutalviews.love/' },
+    { name: 'Zheyun Chen', link: ' http://themushroomfoudation.lol/' },
+    { name: 'Jerimiah Harrington', link: 'https://jharri02.github.io/final-project/' },
+    { name: 'Ruijie Tai', link: 'https://t-0night.github.io/Project-1/index.html' },
+    { name: 'Yufan Xu', link: 'http://memorylab.online' },
+    { name: 'Qinzhi Wang', link: 'https://wqinzhi07.github.io/Project_2/' },
+    { name: 'Lucy Nguyen Pham', link: 'https://internet-chats.com/' }
 ];
 
 // Shuffle the namesAndLinks array before distributing them
@@ -50,7 +50,7 @@ for (let i = 0; i < namesAndLinks.length; i++) {
     temp += `
         <div class="floater-container" style="transform: translate3d(${x}vmin,${y * spreadY}vmin,${z}vmin)">
             <div class="floater-content">
-                <a href="${namesAndLinks[i].link}" style="color: black;">${namesAndLinks[i].name}</a>
+                <a target="_blank" href="${namesAndLinks[i].link}" style="color: black;">${namesAndLinks[i].name}</a>
             </div>
         </div>
     `;
