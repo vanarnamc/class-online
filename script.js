@@ -24,7 +24,7 @@ let namesAndLinks = [
     { name: 'Reese Yijing Huang', link: 'https://reese-21.github.io/Project2/' },
     { name: 'Leon Calzone', link: 'https://leoncalzone.github.io/DISSECARE/' },
     { name: 'Esther Choi', link: 'http://draw-your-social-avatar.site/' },
-    { name: 'Daisy Wu', link: 'ddd' },
+    { name: 'Daisy Wu', link: 'https://jiayi-woo.github.io/daiiisy/' },
     { name: 'Stephanie Granados', link: 'https://www.brutalviews.love/' },
     { name: 'Zheyun Chen', link: ' http://themushroomfoudation.lol/' },
     { name: 'Jerimiah Harrington', link: 'https://jharri02.github.io/final-project/' },
